@@ -5,16 +5,16 @@ breakpoint:
       use: breakpoint
       heading: Breakpoints
       description: |
-        When layouts reduce in size, visual elements may also reduce in size, hide, or otherwise
-        adapt to compensate for the loss in screen real estate.
+        When a viewport increases in size, visual elements may also increase in size, change layout, and 
+        adapt to compensate for the increase in screen real estate, Using mobile first, responsive design
+        approach our goal is to apply minimum styles to make a layout work at the smallest breakpoint.
 
-        Red Hat's breakpoint tokens refer to the three most common classes of device screens,
-        mobile, tablet, and desktop. The breakpoint values represent the **maximum**
+        The breakpoint token values represent the **minimum**
         [CSS pixel](https://developer.mozilla.org/en-US/docs/Glossary/CSS_pixel) width of a device's
-        screen, corresponding to the `max-width` media query so for example a device with a
-        screen width less than the `--rh-breakpoint-mobile-portrait` token is considered a mobile
-        device in portrait mode, whereas a device with a screen width greater than the
-        `--rh-breakpoint-desktop-medium` token is considered a desktop with a large screen.
+        screen, corresponding to the `min-width` media query so for example a device with a
+        viewport greater than the `--rh-breakpoint-small` token is considered equivalent to a mobile
+        device in landscape mode, whereas a device with a screen width less than the
+        `--rh-breakpoint-small` token is considered a equivalent to a mobile device in portrait mode.
 
         Since CSS currently does not allow custom properties in media queries, these tokens must be
         uses in preprocessors or templating systems, or imported into JavaScript modules. We
@@ -27,35 +27,71 @@ breakpoint:
 
         ```js
         static styles = css`
-          @media (max-width: $%(%BreakpointMobilePortrait%)%) %(%
-            /* ... mobile portrait styles */
+          /* No breakpoint */
+          /* mobile portrait styles */
+
+          @media (min-width: $%(%BreakpointSmall%)%) %(%
+            /* ... mobile landscape styles */
           %)%
         `;
         ```
+  # Min width values
+  xsmall:
+    $type: dimension
+    value: 0px # No breakpoint
+    comment: Mobile portrait min width (< 576px)
+  small:
+    $type: dimension
+    value: 576px
+    comment: Mobile landscape min width (≥ 576px) 
+  medium:
+    $type: dimension
+    value: 768px
+    comment: Tablet portrait min width (≥ 768px)
+  large:
+    $type: dimension
+    value: 992px
+    comment: Tablet landscape min width (≥ 992px)
+  xlarge:
+    $type: dimension
+    value: 1200px
+    comment: Desktop small min width (≥ 1200px)
+  xxlarge:
+    $type: dimension
+    value: 1440px
+    comment: Desktop medium min width (≥ 1440px)
+  xxxlarge:
+    $type: dimension
+    value: 1680px
+    comment: Desktop large min width (≥ 1680px)
 
+  # Max width values
   mobile:
     portrait:
       $type: dimension
       value: 575px
-      comment: Mobile portrait max width
+      comment: Mobile portrait max width (0 -> 575px)
     landscape:
       $type: dimension
       value: 767px
-      comment: Mobile landscape max width
+      comment: Tablet portrait max width (0 -> 767px)    
 
   tablet:
     portrait:
       $type: dimension
       value: 991px
+      comment: Tablet landscape max width (0 -> 991px)   
     landscape:
       $type: dimension
       value: 1199px
+      comment: Tablet landscape max width (992px -> 1199px)
 
   desktop:
     small:
       $type: dimension
       value: 1439px
+      comment: Desktop small max width (1200px -> 1439px)
     medium:
       $type: dimension
       value: 1679px
-
+      comment: Desktop small max width (1440px -> 1679px)

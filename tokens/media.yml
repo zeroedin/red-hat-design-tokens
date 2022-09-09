@@ -11,44 +11,74 @@ media:
         ```html
         <link rel="stylesheet"
               href="large-screen.css"
-              media="%(%%(% tokens.get('--rh-media-desktop-large') %)%%)%"
+              media="%(%%(% tokens.get('--rh-media-large') %)%%)%"
         ```
+  xsmall:
+    $type: mediaQuery
+    value:
+      min-width: '{breakpoint.xsmall}'
+
+  small:
+    $type: mediaQuery
+    value:
+      min-width: '{breakpoint.small}'
+
+  medium:
+    $type: mediaQuery
+    value:
+      min-width: '{breakpoint.medium}'
+
+  large:
+    $type: mediaQuery
+    value:
+      min-width: '{breakpoint.large}'
+
+  xlarge:
+    $type: mediaQuery
+    value:
+      min-width: '{breakpoint.xlarge}'     
+
+  xxlarge:
+    $type: mediaQuery
+    value:
+      min-width: '{breakpoint.xxlarge}'    
+
+  xxxlarge:
+    $type: mediaQuery
+    value:
+      min-width: '{breakpoint.xxxlarge}'   
 
   mobile:
     portrait:
       $type: mediaQuery
       value:
-        max-width: '{breakpoint.mobile.portrait}'
+        max-width: '{breakpoint.mobile.portrait}' 
     landscape:
       $type: mediaQuery
       value:
-        min-width: 576px
+        min-width: '{breakpoint.small}'
         max-width: '{breakpoint.mobile.landscape}'
 
   tablet:
     portrait:
       $type: mediaQuery
       value:
-        min-width: 768px
+        min-width: '{breakpoint.medium}'
         max-width: '{breakpoint.tablet.portrait}'
     landscape:
       $type: mediaQuery
       value:
-        min-width: 992px
+        min-width: '{breakpoint.large}'
         max-width: '{breakpoint.tablet.landscape}'
 
   desktop:
     small:
       $type: mediaQuery
       value:
-        min-width: 1200px
+        min-width: '{breakpoint.xlarge}'
         max-width: '{breakpoint.desktop.small}'
     medium:
       $type: mediaQuery
       value:
-        min-width: 1440px
+        min-width: '{breakpoint.xxlarge}'
         max-width: '{breakpoint.desktop.medium}'
-    large:
-      $type: mediaQuery
-      value:
-        min-width: 1680px
