@@ -74,13 +74,13 @@ breakpoint:
     landscape:
       $type: dimension
       value: 767px
-      comment: Tablet portrait max width (0 -> 767px)    
+      comment: Tablet portrait max width (576 -> 767px)    
 
   tablet:
     portrait:
       $type: dimension
       value: 991px
-      comment: Tablet landscape max width (0 -> 991px)   
+      comment: Tablet landscape max width (768 -> 991px)   
     landscape:
       $type: dimension
       value: 1199px
